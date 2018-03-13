@@ -1,0 +1,323 @@
+set $win Mod4
+set $alt Mod1
+
+#set $font font pango:Source Code Pro for Powerline Regular 10, FontAwesome 10
+#$font
+
+#set $font font terminus:monospace 8, FontAwesome 10
+
+set $font font pango:Monospace, FontAwesome 8
+
+floating_modifier $win
+
+#exec --no-startup-id xrandr --output DP1 --primary --auto --left-of HDMI2
+#exec ~/.screenlayout/default.sh
+
+exec /home/null/.screenlayout/i3_biggy.sh
+
+bindsym $win+Return exec mate-terminal
+bindsym $win+g exec gedit
+bindsym $win+c exec chromium
+bindsym $win+Shift+a exec atom
+bindsym $win+Shift+v exec code
+bindsym $win+Shift+f exec firefox-beta-bin
+bindsym $win+Shift+n exec nemo
+bindsym $win+f exec pcmanfm
+bindsym $win+space exec "rofi -show run -lines 14 -bw 5 ~/.Xresources"
+bindsym $win+Shift+Return exec terminator
+bindsym $win+n exec "gedit /home/null//Documents/notes.txt"
+bindsym $win+Shift+space exec xfce4-appfinder
+bindsym $win+Shift+m exec "/opt/mongobooster/mongobooster"
+bindsym $win+Shift+s exec "rofi -show ssh"
+
+#bindsym $win+p exec /home/null/Documents/scripts/play_cliqhop.sh
+bindsym $win+p exec "screen -dmS cvlc /usr/bin/cvlc https://somafm.com/cliqhop.pls"
+bindsym $win+Shift+p exec killall vlc
+
+#rofi -show ssh
+
+bindsym $win+x kill
+bindsym $alt+s exec ~/.i3/rofi.sh
+#bindsym $win+Left focus left
+bindsym $win+Down focus down
+bindsym $win+Up focus up
+#bindsym $win+Right focus right
+bindsym $win+Shift+Left move left
+bindsym $win+Shift+Down move down
+bindsym $win+Shift+Up move up
+bindsym $win+Shift+Right move right
+bindsym $win+h split h
+bindsym $win+v split v
+bindsym $win+a fullscreen
+#bindsym $win+Shift+space floating toggle
+bindsym $alt+space exec LC_ALL=C dmenu_run
+#bindsym $win+a focus parent
+
+bindsym $win+1 workspace "1:WEB"
+bindsym $win+2 workspace "2:DEV"
+bindsym $win+3 workspace "3:TERM"
+bindsym $win+4 workspace "4:FILES"
+bindsym $win+5 workspace "5:RAND"
+bindsym $win+6 workspace "6:SOC"
+bindsym $win+7 workspace "7:MEDIA"
+bindsym $win+8 workspace "8:EXTR"
+bindsym $win+9 workspace "9:REMOTE"
+bindsym $win+Shift+Control+9 workspace "12:VMS"
+
+bindsym $win+$alt+5 workspace "15:MISC"
+
+workspace "1:WEB" output DP1
+
+workspace "2:DEV" output HDMI2
+workspace "3:TERM" output HDMI2
+workspace "4:FILES" output HDMI2
+workspace "5:RAND" output HDMI2
+workspace "6:SOC" output HDMI2
+workspace "7:MEDIA" output HDMI2
+workspace "8:EXTR" output HDMI2
+workspace "9:REMOTE" output HDMI2
+
+workspace "10: + MONGO" output HDMI1
+workspace "11: + HEIDI" output HDMI1
+workspace "12:VMS" output HDMI1
+
+workspace "15:MISC" output HDMI1
+
+assign [class="mongobooster"] "10:MONGO"
+assign [class="NoSQLBooster for MongoDB"] "10: + MONGO"
+assign [class="NoSQLBooster"] "10:MONGO"
+assign [class="nosqlbooster for mongodb"] "10:MONGO"
+assign [class="heidisql.exe"] "11: + HEIDI"
+assign [class="VirtualBox"] "12:VMS"
+
+bindsym $win+Shift+Q exec "/usr/bin/i3-nagbar -t warning -m 'You pressed the exit shortcut. Really exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym $win+Shift+1 move container to workspace "1:WEB"
+bindsym $win+Shift+2 move container to workspace "2:DEV"
+bindsym $win+Shift+3 move container to workspace "3:TERM"
+bindsym $win+Shift+4 move container to workspace "4:FILES"
+bindsym $win+Shift+5 move container to workspace "5:RAND"
+bindsym $win+Shift+6 move container to workspace "6:SOC"
+bindsym $win+Shift+7 move container to workspace "7:MEDIA"
+bindsym $win+Shift+8 move container to workspace "8:EXTR"
+bindsym $win+Shift+9 move container to workspace "9:REMOTE"
+
+#bindsym $win+Shift+w exec /usr/bin/wallpaper
+#bindsym $win+Shift+m i3-msg 'workspace Music; exec /usr/bin/music; workspace Music'
+#bindsym $win+m bar hidden_state toggle
+#bindsym $win+n bar mode toggle
+#bindsym $win+b bar mode hide bar-1
+#bindsym $win+Shift+b bar mode invisible bar-1
+
+bindsym $alt+Control+l exec ~/.i3/i3lock.convert
+#bindsym Print exec scrot '%Y-%m-%d-%H%M%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/Screenshots/'
+bindsym Print exec deepin-screenshot
+
+bindsym $win+Right workspace next
+bindsym $win+Left workspace prev
+
+bindsym Control+Shift+space exec albert show
+
+bindsym $win+Shift+c reload
+bindsym $win+Shift+r restart
+#bindsym $win+Shift+e exec "/usr/bin/i3-nagbar -t warning -m 'You pressed the exit shortcut. Really exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+#bindsym $win+Shift+s sticky toggle
+
+#bindsym $win+Tab exec "rofi -modi 'window,run,ssh,Workspaces:~/.i3/i3_switch_workspaces.sh' -show Workspaces"
+bindsym $win+Tab floating toggle
+bindsym $alt+Shift+l exec /usr/bin/i3lock -c 000000
+
+#bindsym $alt+Control+space exec gedit ~/Documents/notelist.txt
+
+bindsym $alt+m exec amixer -q sset Master toggle
+bindsym $alt+Up exec amixer -q sset Master 4%+
+bindsym $alt+Down exec amixer -q sset Master 4%-
+
+bindsym XF86AudioLowerVolume exec amixer -q set 'Master' 2dB- unmute
+bindsym XF86AudioRaiseVolume exec amixer -q set 'Master' 2dB+ unmute
+#bindsym $alt+Down exec amixer -q set 'Master' 2dB- unmute
+#bindsym $alt+Up exec amixer -q set 'Master' 2dB+ unmute
+
+bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioPrev exec mpc prev
+bindsym XF86AudioStop exec mpc stop	
+bindsym XF86AudioPlay exec mpc toggle
+bindsym Mod1+Tab exec "i3-msg workspace $(i3-msg -t get_workspaces | jq '(.[] | select(.visible) | .num) as $current | [(.[] | select(.num > $current)), .[0]] | first .name')"
+
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $alt+r mode "resize"
+
+#for_window [class="^.*"] border pixel 3
+
+set $back	#22222A
+set $back_focus	#719E90
+set $text_foc	#ffad00
+set $text	#B5B5B5
+set $dark	#383A3B
+set $alert	#709080
+set $black	#ffffff
+set $actext	#E7A264
+set $untext	#99BA6C
+
+# class                 	border  backgr. text    indicator
+client.focused          	$back	$back	$text	$back
+client.focused_inactive 	$dark	$dark	$text	$back
+client.unfocused        	$text	$dark	$text	$back
+client.urgent           	$alert	$alert	$text	$alert
+client.placeholder      	$back	$back	$text	$back
+
+### Custom ###
+gaps inner 10
+gaps outer 5
+smart_gaps on
+smart_borders on
+popup_during_fullscreen smart
+
+for_window [class="Skype"] floating enable
+for_window [class="Transmission"] floating enable
+for_window [class="Tor Browser"] floating enable
+for_window [class="Steam"] floating enable
+for_window [class="Steam" title="^Steam$"] floating disable
+for_window [class="^.*"] border pixel 1
+for_window [title="x2Go*"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="pop-up"] border 0pixel
+for_window [class="TeamViewer*"] floating enable
+for_window [class="Computers & Contacts"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [title="Preferences$"] floating enable
+for_window [window_role="pop-up|task_dialog"] floating enable
+for_window [title="Computers & Contacts"] floating enable
+for_window [title="tilda"] floating enable
+for_window [class="tilda"] floating enable
+for_window [title="VLC"] floating enable
+for_window [title="mpv"] floating enable
+for_window [title="Synapse*"] border 0pixel
+new_window pixel 0
+new_float pixel 0
+hide_edge_borders both
+popup_during_fullscreen smart
+workspace_auto_back_and_forth yes
+
+exec gnome-settings-daemon
+#exec play ~/Documents/glados_sounds/start.wav
+#exec xfce4-panel
+#exec pulseaudio --start
+#exec_always --no-startup-id wallpaper
+#exec_always --no-startup-id wallpaper
+#exec_always --no-startup-id wallpaper
+#exec feh --bg-scale ~/Pictures/wallpapers/papers.co-mo50-forest-green-nature-tree-jonas-nilsson-lee-25-wallpaper_deux.jpg
+#exec feh --randomize --bg-fill ./Pictures/Backgrounds/5TMBYt4-edit3.jpg
+#exec_always feh --randomize --bg-fill ./Pictures/Backgrounds/5TMBYt4-edit3.jpg
+#exec_always xscreensaver -no-splash
+#exec xscreensaver-command -lock
+#exec --no-startup-id owncloud
+#exec --no-startup-id synapse -s
+
+exec --no-startup-id /usr/bin/xautolock -time 1 -locker i3lock " -c 000000"
+
+exec --no-startup-id polybar bar -c /home/null/.config/polybar/config_i3
+exec --no-startup-id polybar bar -c /home/null/.config/polybar/config_i3_2
+exec --no-startup-id polybar bar -c /home/null/.config/polybar/config_i3_3
+
+exec --no-startup-id gnome-keyring-daemon
+
+#exec volumeicon
+#exec /usr/bin/nm-applet
+exec radiotray
+exec thunderbird
+exec veracrypt
+#exec megasync
+#exec  /usr/bin/dropbox
+
+exec_always qtodotxt
+
+#exec transmission-gtk -m
+exec killall -q notify-osd
+
+
+#exec_always killall dunst; dunst -config ~/.i3/config_dunst
+#exec compton -c -C -G -r 6 -o .35 -l -8 -t 5 -m .90 -f
+
+# DEFAULT STARTUP CMDS
+exec_always compton
+exec_always run_keybase
+exec_always syncthing
+exec_always slack
+exec_always pamac-tray
+exec_always budgie-polkit-dialog
+
+exec setxkbmap dk
+
+exec feh --bg-scale /home/null/Pictures/green.jpg --bg-scale /home/null/Pictures/green.jpg &
+
+#-------------------------------------------------------------------------------------------
+#				WINDOW CLASS ASSIGN
+#-------------------------------------------------------------------------------------------
+
+#assign [class="Google-Chrome-Stable"]  CHROME
+#assign [class="Firefox"]  FIREFOX
+#assign [class="Gimp"] 
+#assign [class="TeamViewer"]
+
+#assign [class="Hexchat"] "6:SOC"
+#assign [class="Thunderbird"] "6:SOC"
+
+#assign [class="Ncmpcpp"]
+
+ipc-socket ~/.i3/ipc.sock
+
+set $wine_gaps Gaps: (o) outer, (i) inner
+set $wine_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $wine_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $win+Shift+g mode "$wine_gaps"
+
+mode "$wine_gaps" {
+        bindsym o      mode "$wine_gaps_outer"
+        bindsym i      mode "$wine_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$wine_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$wine_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
